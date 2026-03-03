@@ -1,5 +1,6 @@
 package Team;
 
-public class Searchable {
+public interface Searchable {
+	boolean matchesKeyword (String keyword);
 
 }
