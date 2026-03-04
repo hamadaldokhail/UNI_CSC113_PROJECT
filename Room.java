@@ -62,25 +62,22 @@ public class Room implements Searchable {
 
 
 	public void reserve() {
-		System.out.println("Room is reserved <> ");
-		available = true;
+	available = false;
+		System.out.println("Room" + roomNumber + "is now reserved <> ");
 	}
 	public void release() {
-		System.out.println("Room is released >< ");
-		available = false;
+		available = true;
+		System.out.println("Room" + roomNumber + "is now release >< ");
 	}
 	@Override
 	public boolean matchesKeyword(String keyword) {
-			if (type.equalsIgnoreCase( keyword ) ) {
-				System.out.println("keyword is true ");
+			if (type.equalsIgnoreCase(keyword) ) {
 				return true;
-				
 			}
-			else
-				System.out.println("keyword is false");
 		return false;
 	}
 	
 	
 
 }
+
