@@ -25,6 +25,12 @@ public class Guest implements Searchable {
 			System.out.println("Guset is not here >< ");
 		return false;
 	}
+
+	// Hamed added because i need in Reservation class -- getSummary()
+	public String getName() {
+		return name;
+	}
 	
 
 }
+
