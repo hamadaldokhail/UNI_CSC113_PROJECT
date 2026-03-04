@@ -18,11 +18,9 @@ public class Guest implements Searchable {
 	@Override
 	public boolean matchesKeyword(String keyword) {
 		if ( guestId.equalsIgnoreCase(keyword) ||  name.equalsIgnoreCase(keyword) || phone.equalsIgnoreCase(keyword) || email.equalsIgnoreCase(keyword) ) {
-			System.out.println("Guest is here <> ");
 			return true;
 		}
-		else
-			System.out.println("Guset is not here >< ");
+		
 		return false;
 	}
 
@@ -33,4 +31,5 @@ public class Guest implements Searchable {
 	
 
 }
+
 
