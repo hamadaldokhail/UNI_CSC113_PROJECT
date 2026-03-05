@@ -21,7 +21,7 @@ public class CorporateSuiteReservation extends SuiteReservation {
 
 	@Override
 	public String getSummary() {
-		return "Reservation ID: " + reservationId + "\nReservation type: Suite" + "\nGuest: " + guest.getName()
+		return "Reservation ID: " + reservationId + "\nReservation type: Corporate Suite" + "\nGuest: " + guest.getName()
 				+ "\nRoom: " + room.getRoomNumber() + "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate
 				+ "\nNights: " + nights + "\nVIP service: " + getVipService() + "\ncompanyName: " + companyName
 				+ "\nCorporate discount: " + corporateDiscount + "\nCost: " + calculateCost();
