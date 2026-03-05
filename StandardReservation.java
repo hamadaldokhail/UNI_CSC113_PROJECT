@@ -9,11 +9,12 @@ public class StandardReservation extends Reservation {
 		this.breakfastIncluded = breakfastIncluded;
 	}
 
+	// used in the getsummary
 	public String getBreakfastIncluded() {
 		if (breakfastIncluded)
 			return "Yes";
 		else
-			return "no";
+			return "No";
 	}
 
 	@Override
