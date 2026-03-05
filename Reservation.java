@@ -2,7 +2,7 @@
 public abstract class Reservation {
 
 	protected String reservationId;
-	protected String checkInDate;
+	protected String checkInDate; // dates are in this form dd/mm/yyyy
 	protected String checkOutDate;
 	protected int nights;
 	protected Guest guest;
@@ -18,18 +18,12 @@ public abstract class Reservation {
 		this.room = room;
 	}
 
-	public double calculateCost() {
-		return room.getPricePerNight() * nights;
-	}
+	public abstract double calculateCost();
 
 	public String getSummary() {
-		return "Reservation ID: " + reservationId +
-			       "\nGuest: " + guest.getName() +
-			       "\nRoom: " + room.getRoomNumber() +
-			       "\nCheck-in: " + checkInDate +
-			       "\nCheck-out: " + checkOutDate +
-			       "\nNights: " + nights +
-			       "\nCost: " + calculateCost();
+		return "Reservation ID: " + reservationId + "\nGuest: " + guest.getName() + "\nRoom: " + room.getRoomNumber()
+				+ "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate + "\nNights: " + nights + "\nCost: "
+				+ calculateCost();
 	}
 
 }
