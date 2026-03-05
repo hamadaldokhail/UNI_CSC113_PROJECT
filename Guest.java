@@ -28,8 +28,11 @@ public class Guest implements Searchable {
 	public String getName() {
 		return name;
 	}
-	
+	public String getGuestId(){
+		return guestId;
+	}
 
 }
+
 
 
