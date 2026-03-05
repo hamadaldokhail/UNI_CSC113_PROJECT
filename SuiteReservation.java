@@ -17,6 +17,7 @@ public class SuiteReservation extends Reservation {
 			return "No";
 	}
 
+	// the cost of vip service is 500
 	@Override
 	public double calculateCost() {
 		if (vipService)
