@@ -9,11 +9,12 @@ public class SuiteReservation extends Reservation {
 		this.vipService = vipService;
 	}
 
+	// used in the getSummary
 	public String getVipService() {
 		if (vipService)
 			return "Yes";
 		else
-			return "no";
+			return "No";
 	}
 
 	@Override
