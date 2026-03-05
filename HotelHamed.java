@@ -5,7 +5,7 @@ public class HotelHamed {
 	private int reservationCount;
 
 	public HotelHamed() {
-		reservations = new Reservation[100];
+		reservations = new Reservation[50];
 		reservationCount = 0;
 	}
 
@@ -26,6 +26,8 @@ public class HotelHamed {
 		// then add the reservation in the first null value
 		reservations[reservationCount] = reservation;
 		System.out.println("Reservation added successfully!");
+		// reserves the room
+		reservations[reservationCount].room.reserve();
 		reservationCount++;
 		return true;
 	}
@@ -43,6 +45,8 @@ public class HotelHamed {
 			System.out.println("Reservation not found");
 			return false;
 		}
+		// releases the room
+		reservations[index].room.release();
 		// cancelling by shifting
 		for (int i = index; i < reservationCount - 1; i++) {
 			reservations[i] = reservations[i + 1];
