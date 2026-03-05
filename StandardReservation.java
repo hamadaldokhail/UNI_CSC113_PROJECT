@@ -17,6 +17,7 @@ public class StandardReservation extends Reservation {
 			return "No";
 	}
 
+	// the cost of breakfast is 100
 	@Override
 	public double calculateCost() {
 		if (breakfastIncluded)
