@@ -24,7 +24,7 @@ public class HotelFahad {
 	
 	public boolean removeGuest(String guestId){
 		for (int i = 0; i < guestCount; i++) {
-			if (guests[i].getName().equalsIgnoreCase(guestId)) {
+			if (guests[i].getGuest().equalsIgnoreCase(guestId)) {
 				for (int j = i; j < guestCount - 1; j++) {
 					guests[j] = guests[j + 1];
 				}
@@ -90,4 +90,5 @@ public class HotelFahad {
 	}
 	
 }
+
 
