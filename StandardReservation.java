@@ -3,9 +3,9 @@ public class StandardReservation extends Reservation {
 
 	private boolean breakfastIncluded;
 
-	public StandardReservation(String reservationId, String checkInDate, String checkOutDate, int nights, Guest guest,
+	public StandardReservation(String checkInDate, String checkOutDate, int nights, Guest guest,
 			Room room, boolean breakfastIncluded) {
-		super(reservationId, checkInDate, checkOutDate, nights, guest, room);
+		super(checkInDate, checkOutDate, nights, guest, room);
 		this.breakfastIncluded = breakfastIncluded;
 	}
 
