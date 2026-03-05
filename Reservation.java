@@ -20,7 +20,7 @@ public abstract class Reservation {
 	}
 	
 	// generating a custom ID
-	public void setReservationId() {
+	protected void setReservationId() {
 		reservationId = "R" + nextId++ + "_" + guest.getName() + room.getRoomNumber();
 	}
 
@@ -33,3 +33,4 @@ public abstract class Reservation {
 	}
 
 }
+
