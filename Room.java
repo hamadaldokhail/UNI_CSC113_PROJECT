@@ -1,10 +1,12 @@
 package Team;
 
+
 public class Room implements Searchable {
 	private int roomNumber;
 	private String type;
 	private double pricePerNight;
 	private boolean available;
+	Reservation reservation;
 	
 	public Room(int roomNumber, String type, double pricePerNight) {
 		setRoomNumber(roomNumber); 
@@ -61,13 +63,13 @@ public class Room implements Searchable {
 	}
 
 
-	public void reserve() {
+	public String reserve() {
 	available = false;
-		System.out.println("Room" + roomNumber + "is now reserved <> ");
+		return "Room" + roomNumber + "is now reserved <> ";
 	}
-	public void release() {
+	public String release() {
 		available = true;
-		System.out.println("Room" + roomNumber + "is now release >< ");
+		return "Room" + roomNumber + "is now release >< ";
 	}
 	@Override
 	public boolean matchesKeyword(String keyword) {
@@ -80,4 +82,3 @@ public class Room implements Searchable {
 	
 
 }
-
