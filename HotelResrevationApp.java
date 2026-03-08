@@ -1,6 +1,4 @@
 import java.util.Scanner;
-
-
 public class HotelResrevationApp {
 public static void main(String[] args) {
 	Scanner input = new Scanner(System.in);
@@ -16,7 +14,6 @@ public static void main(String[] args) {
 	Hotel hotel = new Hotel();
     StandardReservation sr = null;
 	SuiteReservation sur = null;
-
 	do {
 		System.out.println("Welcome to Hotel:\nPlease Choose sign in or exit: \n1- sign as guest \n2- exit");
 		choose1 = input.nextInt();
@@ -28,7 +25,7 @@ public static void main(String[] args) {
 			String name = input.next();
 			System.out.println("what is your id: ");
 			String guestId = input.next();
-			System.out.println("what is your phone number : ");
+			System.out.println("what is your phone number: ");
 			String phone = input.next();
 			System.out.println("what is your email : ");
 			String email = input.next();
@@ -37,16 +34,16 @@ public static void main(String[] args) {
 		    hotel.addGuest(guest);
 
 			do {
-				System.out.println("choose one of these services: \n1-Reservation a room \n2-Cancel reservation \n3-search reservation \n4- disaplay reservation\n5- count all free room \n6-exit");
+				System.out.print("choose one of these services: \n1- Reservation a room \n2- Cancel reservation \n3- Search reservation \n4- Disaplay reservation\n5- Count all free room \n6- Sign Out");
 
 			choose2 = input.nextInt();
 			switch(choose2) {
 			case 1 :
-				System.out.println("Choose a level you want: \n 1-Standard \n 2- Suite");
+				System.out.println("Choose a level you want: \n1- Standard \n2- Suite");
 				choose3 = input.nextInt();
-				System.out.println("choose a day for checkin: ");
+				System.out.println("choose a date for checkin: ");
 				  checkInDate = input.next();
-					System.out.println("choose a day for checkout: ");
+					System.out.println("choose a date for checkout: ");
 					 checkOutDate = input.next();
 					System.out.println("Enter number of nights: ");
 					 nights = input.nextInt();
@@ -62,7 +59,6 @@ public static void main(String[] args) {
 						
 			if(choose3 == 1) {
 
-				
 					System.out.println("do you want breakfast? ");
 					String breakfast = input.next();   isbreakfastIncluded=breakfast.equalsIgnoreCase("yes") ;
 					
@@ -98,12 +94,11 @@ public static void main(String[] args) {
 					
 					if(sur != null) {
 					hotel.cancelReservation(sur.getReservationId());
-				    sur = null;
-				    
+				    hotel.removeRoom(sur.getRoomNumber());
 					}
 				    else if (sr!=null) {
 				    	hotel.cancelReservation(sr.getReservationId());
-				    	sr = null;
+				    	hotel.removeRoom(sr.getRoomNumber());
 				    }
 				    else
 				    	System.out.println("Reserve a room first! ");
@@ -124,12 +119,12 @@ public static void main(String[] args) {
 					break;
 					
 				case 5:
-				
+
 					System.out.println(100 - hotel.countAvailableRoomRecuresive(0));
 					break;
 				
 				case 6 :
-					System.out.println("good bye");
+					System.out.println("Signing out...");
 					break;
 					
 				default: 
@@ -137,17 +132,13 @@ public static void main(String[] args) {
 
 			}// default for switch num2
 		} while(choose2 != 6);
-		
+		break;
 		case 2 :
 			
 			System.out.println("good bye");
-			
 			break;
 		
 		default :
 			System.out.println("Choose a correct number");
 		} 
-} while(choose1 != 2);
-	
-}
-}
+} while(choose1 != 2); } }
