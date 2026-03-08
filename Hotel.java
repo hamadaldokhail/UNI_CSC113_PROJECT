@@ -17,7 +17,10 @@ public class Hotel {
 		this.reservations = new Reservation[100];
 		reservationCount = 0;
 		guestCount = 0;
-		roomCount = 0;
+	}
+	public int getRoomCount() {
+		
+		return roomCount;
 	}
 	
 	// Adding a reservation
@@ -176,7 +179,7 @@ public class Hotel {
 		}
 		
 		if(rooms[index]==null ) {
-          return  1 + countAvailableRoomRecuresive(index+1);	}
+          return 1 + countAvailableRoomRecuresive(index+1);	}
 	
 		else {
 			return countAvailableRoomRecuresive(index+1);}
@@ -187,6 +190,11 @@ public class Hotel {
 	
 	
 	
+	
+	
+	
+	
+}
 	
 	
 	
