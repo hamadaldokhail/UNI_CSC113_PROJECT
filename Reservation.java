@@ -31,6 +31,10 @@ public abstract class Reservation {
 				+ "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate + "\nNights: " + nights + "\nCost: "
 				+ calculateCost();
 	}
+	public String getReservationId () {
+		return reservationId;
+	}
 
 }
+
 
