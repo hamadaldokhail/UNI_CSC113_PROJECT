@@ -1,13 +1,12 @@
 
-
 public class CorporateSuiteReservation extends SuiteReservation {
 
 	private String companyName;
 	private double corporateDiscount;
 
-	public CorporateSuiteReservation( String checkInDate, String checkOutDate, int nights,
-			Guest guest, Room room, boolean vipService, String companyName, double corporateDiscount) {
-		super( checkInDate, checkOutDate, nights, guest, room, vipService);
+	public CorporateSuiteReservation(String checkInDate, String checkOutDate, int nights, Guest guest, Room room,
+			boolean vipService, String companyName, double corporateDiscount) {
+		super(checkInDate, checkOutDate, nights, guest, room, vipService);
 
 		this.companyName = companyName;
 		this.corporateDiscount = corporateDiscount;
@@ -23,10 +22,10 @@ public class CorporateSuiteReservation extends SuiteReservation {
 
 	@Override
 	public String getSummary() {
-		return "Reservation ID: " + reservationId + "\nReservation type: Corporate Suite" + "\nGuest: " + guest.getName()
-				+ "\nRoom: " + room.getRoomNumber() + "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate
-				+ "\nNights: " + nights + "\nVIP service: " + getVipService() + "\ncompanyName: " + companyName
-				+ "\nCorporate discount: " + corporateDiscount + "\nCost: " + calculateCost();
+		return "Reservation ID: " + reservationId + "\nReservation type: Corporate Suite" + "\nGuest: "
+				+ guest.getName() + "\nRoom: " + room.getRoomNumber() + "\nCheck-in: " + checkInDate + "\nCheck-out: "
+				+ checkOutDate + "\nNights: " + nights + "\nVIP service: " + getVipService() + "\ncompanyName: "
+				+ companyName + "\nCorporate discount: " + corporateDiscount + "\nCost: " + calculateCost();
 	}
 
 }
