@@ -1,16 +1,15 @@
 
 public abstract class Reservation {
 
-	protected String reservationId; // it will be R + nextId +  guest name + guest room number
 	private static int nextId = 1;
+	protected String reservationId; // it will be R + nextId + guest name + guest room number
 	protected String checkInDate; // dates are in this form dd/mm/yyyy
 	protected String checkOutDate;
 	protected int nights;
 	protected Guest guest;
 	protected Room room;
 
-	public Reservation(String checkInDate, String checkOutDate, int nights, Guest guest,
-			Room room) {
+	public Reservation(String checkInDate, String checkOutDate, int nights, Guest guest, Room room) {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.nights = nights;
@@ -18,15 +17,7 @@ public abstract class Reservation {
 		this.room = room;
 		setReservationId();
 	}
-	
-	public int getRoomNumber() {
-		return room.getRoomNumber();
-	}
-	
-	public String getReservationId() {
-		
-		return reservationId;
-	}
+
 	// generating a custom ID
 	protected void setReservationId() {
 		reservationId = "R" + nextId++ + "_" + guest.getName() + room.getRoomNumber();
@@ -38,6 +29,10 @@ public abstract class Reservation {
 		return "Reservation ID: " + reservationId + "\nGuest: " + guest.getName() + "\nRoom: " + room.getRoomNumber()
 				+ "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate + "\nNights: " + nights + "\nCost: "
 				+ calculateCost();
+	}
+
+	public String getReservationId() {
+		return reservationId;
 	}
 
 }
