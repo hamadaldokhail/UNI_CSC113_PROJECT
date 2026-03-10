@@ -19,6 +19,14 @@ public abstract class Reservation {
 		setReservationId();
 	}
 	
+	public int getRoomNumber() {
+		return room.getRoomNumber();
+	}
+	
+	public String getReservationId() {
+		
+		return reservationId;
+	}
 	// generating a custom ID
 	protected void setReservationId() {
 		reservationId = "R" + nextId++ + "_" + guest.getName() + room.getRoomNumber();
@@ -31,10 +39,5 @@ public abstract class Reservation {
 				+ "\nCheck-in: " + checkInDate + "\nCheck-out: " + checkOutDate + "\nNights: " + nights + "\nCost: "
 				+ calculateCost();
 	}
-	public String getReservationId () {
-		return reservationId;
-	}
 
 }
-
-
