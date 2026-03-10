@@ -1,12 +1,14 @@
 
+
 public class CorporateSuiteReservation extends SuiteReservation {
 
 	private String companyName;
 	private double corporateDiscount;
 
-	public CorporateSuiteReservation(String checkInDate, String checkOutDate, int nights,
+	public CorporateSuiteReservation( String checkInDate, String checkOutDate, int nights,
 			Guest guest, Room room, boolean vipService, String companyName, double corporateDiscount) {
-		super(checkInDate, checkOutDate, nights, guest, room, vipService);
+		super( checkInDate, checkOutDate, nights, guest, room, vipService);
+
 		this.companyName = companyName;
 		this.corporateDiscount = corporateDiscount;
 	}
