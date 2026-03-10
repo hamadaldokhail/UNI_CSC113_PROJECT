@@ -1,144 +1,166 @@
 import java.util.Scanner;
+
 public class HotelResrevationApp {
-public static void main(String[] args) {
-	Scanner input = new Scanner(System.in);
-	
-	int choose1,choose2,choose3;
-	 int roomNumber;
-	String checkInDate;
-	String checkOutDate;
-	int nights;
-	Guest guest;
-	boolean isbreakfastIncluded;
-	boolean vipService;
-	Hotel hotel = new Hotel();
-    StandardReservation sr = null;
-	SuiteReservation sur = null;
-	do {
-		System.out.println("Welcome to Hotel:\nPlease Choose sign in or exit: \n1- sign as guest \n2- exit");
-		choose1 = input.nextInt();
-		
-		switch(choose1) {
-		
-		case 1 :
-			System.out.println("What is your name: ");
-			String name = input.next();
-			System.out.println("what is your id: ");
-			String guestId = input.next();
-			System.out.println("what is your phone number: ");
-			String phone = input.next();
-			System.out.println("what is your email : ");
-			String email = input.next();
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
 
-		    guest = new Guest( guestId,  name,  phone,  email);
-		    hotel.addGuest(guest);
+		int choose1, choose2, choose3;
+		int roomNumber;
+		String checkInDate;
+		String checkOutDate;
+		int nights;
+		Guest guest;
+		boolean isbreakfastIncluded;
+		boolean vipService;
+		Hotel hotel = new Hotel();
+		StandardReservation sr = null;
+		SuiteReservation sur = null;
+		do {
+			System.out.println("---------------------");
+			System.out.println("Welcome to the Hotel");
+			System.out.println("---------------------");
+			System.out.println("Kindly sign in or exit (enter a number): \n1- sign in \n2- exit");
+			choose1 = input.nextInt();
 
-			do {
-				System.out.print("choose one of these services: \n1- Reservation a room \n2- Cancel reservation \n3- Search reservation \n4- Disaplay reservation\n5- Count all free room \n6- Sign Out");
+			switch (choose1) {
 
-			choose2 = input.nextInt();
-			switch(choose2) {
-			case 1 :
-				System.out.println("Choose a level you want: \n1- Standard \n2- Suite");
-				choose3 = input.nextInt();
-				System.out.println("choose a date for checkin: ");
-				  checkInDate = input.next();
-					System.out.println("choose a date for checkout: ");
-					 checkOutDate = input.next();
-					System.out.println("Enter number of nights: ");
-					 nights = input.nextInt();
-					 while(true) {
-						 
-						System.out.println("Enter room number: ");
-						 roomNumber = input.nextInt();
-						if(hotel.searchRoom(roomNumber) != null) {
-							System.out.println("the is room already taken please choose another room");
-						continue;}
+			case 1:
+				System.out.println("---------------------");
+				System.out.print("What is your name: ");
+				String name = input.next();
+				System.out.print("what is your id: ");
+				String guestId = input.next();
+				System.out.print("what is your phone number: ");
+				String phone = input.next();
+				System.out.print("what is your email: ");
+				String email = input.next();
+
+				guest = new Guest(guestId, name, phone, email);
+				System.out.println("---------------------");
+				hotel.addGuest(guest);
+
+				do {
+					System.out.println("---------------------");
+					System.out.println(
+							"choose one of these services (enter a number):\n \n1- Reserve a room \n2- Cancel a reservation \n3- Search a reservation \n4- Disaplay all reservations \n5- Display available rooms \n6- Sign Out");
+
+					choose2 = input.nextInt();
+					System.out.println("---------------------");
+					switch (choose2) {
+					case 1:
+						System.out.println("What would you like to reserve (enter a number): \n1- Standard \n2- Suite");
+						choose3 = input.nextInt();
+						System.out.println("---------------------");
+						System.out.println("When would you like to check-in: ");
+						checkInDate = input.next();
+						System.out.println("---------------------");
+						System.out.println("When would you like to check-out: ");
+						checkOutDate = input.next();
+						System.out.println("---------------------");
+						System.out.println("So how many nights you would like to have: ");
+						nights = input.nextInt();
+						System.out.println("---------------------");
+						while (true) {
+
+							System.out.println("Enter room number: ");
+							roomNumber = input.nextInt();
+							if (hotel.searchRoom(roomNumber) != null) {
+								System.out.println("the is room already taken please choose another room");
+								continue;
+							}
 							break;
-					 }
-						
-			if(choose3 == 1) {
+						}
 
-					System.out.println("do you want breakfast? ");
-					String breakfast = input.next();   isbreakfastIncluded=breakfast.equalsIgnoreCase("yes") ;
-					
-						Room room = new Room(roomNumber , "Standard " , 200 );
-						room.reserve();
-					   sr = new StandardReservation(checkInDate, checkOutDate, nights, guest, room, isbreakfastIncluded); 
-					   hotel.addReservation(sr);
-					   hotel.addRoom(room);
-						
+						if (choose3 == 1) {
 
-				System.out.println("you reservation a standard room succseffuly. \n" + sr.getSummary());
-			}
-			else if (choose3 == 2) {
-				
-					System.out.println("do you want VIP Service ");
-					String VIP = input.next(); 	vipService = VIP.equalsIgnoreCase("yes");
+							System.out.println("do you want breakfast? ");
+							String breakfast = input.next();
+							isbreakfastIncluded = breakfast.equalsIgnoreCase("yes");
+							System.out.println("---------------------");
 
-					Room room = new Room(roomNumber , "Suite " , 500 );
-					room.reserve();
-				    sur = new SuiteReservation( checkInDate,checkOutDate, nights, guest, room, vipService);
-				    hotel.addReservation(sur);
-					hotel.addRoom(room);
+							Room room = new Room(roomNumber, "Standard ", 200);
+							room.reserve();
+							sr = new StandardReservation(checkInDate, checkOutDate, nights, guest, room,
+									isbreakfastIncluded);
+							hotel.addReservation(sr);
+							System.out.println("---------------------");
+							hotel.addRoom(room);
+							System.out.println("---------------------");
 
-					
-					System.out.println("you reservation a Suite room succseffuly \n the summary: \n " + sur.getSummary()) ;
-			}
-			else
+							System.out.println("Reservation details: \n \n" + sr.getSummary());
+						} else if (choose3 == 2) {
+
+							System.out.println("do you want VIP Service ");
+							String VIP = input.next();
+							vipService = VIP.equalsIgnoreCase("yes");
+							System.out.println("---------------------");
+
+							Room room = new Room(roomNumber, "Suite ", 500);
+							room.reserve();
+							sur = new SuiteReservation(checkInDate, checkOutDate, nights, guest, room, vipService);
+							hotel.addReservation(sur);
+							System.out.println("---------------------");
+							hotel.addRoom(room);
+							System.out.println("---------------------");
+
+							System.out.println("Reservation details: \n \n" + sur.getSummary());
+						} else
+							System.out.println("Choose a correct number");
+
+						break;
+
+					case 2:
+
+						if (sur != null) {
+							hotel.cancelReservation(sur.getReservationId());
+							hotel.removeRoom(sur.room.getRoomNumber());
+						} else if (sr != null) {
+							hotel.cancelReservation(sr.getReservationId());
+							hotel.removeRoom(sr.room.getRoomNumber());
+						} else
+							System.out.println("Reserve a room first! ");
+						break;
+
+					case 3:
+						System.out.println("Enter your reservation ID: ");
+						String idsearch = input.next();
+						if (null != hotel.searchReservation(idsearch)) {
+							System.out.println("Reservation details:  \n");
+							System.out.println(hotel.searchReservation(idsearch).getSummary());
+						}
+						;
+
+						break;
+
+					case 4:
+
+						hotel.displayAllReservations();
+
+						break;
+
+					case 5:
+
+						System.out.println(100 - hotel.countAvailableRoomRecuresive(0));
+						break;
+
+					case 6:
+						System.out.println("Signing out...");
+						break;
+
+					default:
+						System.out.println("Choose a correct number");
+
+					}// default for switch num2
+				} while (choose2 != 6);
+				break;
+			case 2:
+				System.out.println("---------------------");
+				System.out.println("Good bye");
+				break;
+
+			default:
 				System.out.println("Choose a correct number");
-
-			break; 
-			
-				case 2 : 
-					
-					if(sur != null) {
-					hotel.cancelReservation(sur.getReservationId());
-				    hotel.removeRoom(sur.getRoomNumber());
-					}
-				    else if (sr!=null) {
-				    	hotel.cancelReservation(sr.getReservationId());
-				    	hotel.removeRoom(sr.getRoomNumber());
-				    }
-				    else
-				    	System.out.println("Reserve a room first! ");
-					break;
-					
-					
-				case 3 : 
-					System.out.println("Enter your reservation ID: ");
-					String idsearch = input.next();
-					hotel.searchReservation(idsearch);
-					
-					break;
-					
-				case 4 :
-					
-					hotel.displayAllReservations();
-					
-					break;
-					
-				case 5:
-
-					System.out.println(100 - hotel.countAvailableRoomRecuresive(0));
-					break;
-				
-				case 6 :
-					System.out.println("Signing out...");
-					break;
-					
-				default: 
-					System.out.println("Choose a correct number");
-
-			}// default for switch num2
-		} while(choose2 != 6);
-		break;
-		case 2 :
-			
-			System.out.println("good bye");
-			break;
-		
-		default :
-			System.out.println("Choose a correct number");
-		} 
-} while(choose1 != 2); } }
+			}
+		} while (choose1 != 2);
+	}
+}
