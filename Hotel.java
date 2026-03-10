@@ -1,3 +1,4 @@
+
 public class Hotel {
 
 	
@@ -190,11 +191,6 @@ public class Hotel {
 	
 	
 	
-	
-	
-	
-	
-}
 	
 	
 	
