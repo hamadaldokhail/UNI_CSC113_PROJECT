@@ -3,7 +3,7 @@ public class SuiteReservation extends Reservation {
 
 	protected boolean vipService;
 
-	public SuiteReservation(String checkInDate, String checkOutDate, int nights, Guest guest,
+	public SuiteReservation( String checkInDate, String checkOutDate, int nights, Guest guest,
 			Room room, boolean vipService) {
 		super(checkInDate, checkOutDate, nights, guest, room);
 		this.vipService = vipService;
