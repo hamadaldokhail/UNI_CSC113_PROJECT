@@ -1,4 +1,3 @@
-package Team;
 
 public class Guest implements Searchable {
 	private String guestId;
@@ -33,6 +32,5 @@ public class Guest implements Searchable {
 	}
 
 }
-
 
 
