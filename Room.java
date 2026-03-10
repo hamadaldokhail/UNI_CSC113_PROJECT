@@ -16,7 +16,7 @@ public class Room implements Searchable {
 	
 	public int getRoomNumber() {
 		return roomNumber;
-	}t
+	}
 
 
 	public void setRoomNumber(int roomNumber) {
@@ -80,5 +80,6 @@ public class Room implements Searchable {
 	
 
 }
+
 
 
