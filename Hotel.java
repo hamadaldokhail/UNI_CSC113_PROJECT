@@ -27,7 +27,7 @@ public class Hotel {
 	// adding room
 	public boolean addRoom(Room room) {
 		if (roomCount < rooms.length) {
-			rooms[roomCount] = new Room ( room.getRoomNumber() , room.getType() , room.getPricePerNight() );
+			rooms[roomCount] = new Room (room);
 			roomCount++;
 			System.out.println("Room has been added successfully!");
 			return true;
