@@ -11,6 +11,12 @@ public class Room implements Searchable {
 		setPricePerNight(pricePerNight);
 		available = true;
 	}
+	public Room (Room other) {
+		this.roomNumber = other.roomNumber;
+		this.type = other.type;
+		this.pricePerNight = other.pricePerNight;
+		this.available = other.available;
+	}
 
 	public int getRoomNumber() {
 		return roomNumber;
@@ -70,3 +76,4 @@ public class Room implements Searchable {
 	}
 
 }
+
