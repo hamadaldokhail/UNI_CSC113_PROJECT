@@ -15,10 +15,11 @@ public class HotelResrevationApp {
 		Hotel hotel = new Hotel();
 		StandardReservation sr = null;
 		SuiteReservation sur = null;
+		
+		System.out.println("---------------------");
+		System.out.println("Welcome to the Hotel");
+		System.out.println("---------------------");
 		do {
-			System.out.println("---------------------");
-			System.out.println("Welcome to the Hotel");
-			System.out.println("---------------------");
 			System.out.println("Kindly sign in or exit (enter a number): \n1- sign in \n2- exit");
 			choose1 = input.nextInt();
 
