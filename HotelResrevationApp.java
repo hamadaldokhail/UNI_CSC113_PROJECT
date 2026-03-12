@@ -18,8 +18,8 @@ public class HotelResrevationApp {
 		
 		System.out.println("---------------------");
 		System.out.println("Welcome to the Hotel");
-		System.out.println("---------------------");
 		do {
+			System.out.println("---------------------");
 			System.out.println("Kindly sign in or exit (enter a number): \n1- sign in \n2- exit");
 			choose1 = input.nextInt();
 
@@ -66,7 +66,7 @@ public class HotelResrevationApp {
 							System.out.println("Enter room number: ");
 							roomNumber = input.nextInt();
 							if (hotel.searchRoom(roomNumber) != null) {
-								System.out.println("the is room already taken please choose another room");
+								System.out.println("The room is already taken please choose another room");
 								continue;
 							}
 							break;
