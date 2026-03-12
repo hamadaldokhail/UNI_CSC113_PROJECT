@@ -16,11 +16,12 @@ public abstract class Reservation {
 		this.guest = guest;
 		this.room = room;
 		setReservationId();
+		nextId++;
 	}
 
 	// generating a custom ID
 	protected void setReservationId() {
-		reservationId = "R" + nextId++ + "_" + guest.getName() + room.getRoomNumber();
+		reservationId = "R" + nextId + "_" + guest.getName() + room.getRoomNumber();
 	}
 
 	public abstract double calculateCost();
@@ -36,3 +37,4 @@ public abstract class Reservation {
 	}
 
 }
+
