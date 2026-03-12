@@ -193,6 +193,8 @@ public class Hotel {
 		}
 		for (int i = 0; i < reservationCount; i++) {
 			System.out.println(reservations[i].getSummary());
+			if (reservationCount > 1 && i < reservationCount - 1)
+				System.out.println();
 		}
 	}
 
