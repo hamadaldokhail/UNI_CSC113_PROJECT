@@ -39,12 +39,12 @@ public class HotelResrevationApp {
 						while(true) {
 						System.out.print("what is your id: ");
 						 guestId = input.next();
-						if(hotel.searchGuest(guestId)!=null) {
-							System.out.println("The ID is used before, try another");
-							continue;
+						if(hotel.searchGuest(guestId)== null ) {
+							break;
 						}
 						else {
-							break;
+							System.out.println("The ID is used before, try another");
+							
 						}
 						}
 						System.out.print("what is your phone number: ");
@@ -52,7 +52,7 @@ public class HotelResrevationApp {
 						System.out.print("what is your email: ");
 						String email = input.next();
 					    guest = new Guest(guestId , name , phone , email);
-						
+						hotel.addGuest(guest);
 						System.out.println("---------------------");
 
 
@@ -194,6 +194,9 @@ public class HotelResrevationApp {
 						break;
 
 					case 6:
+						 sr = null;
+				         sur = null;
+						 csr = null;
 						
 						System.out.println("Signing out...");
 						break;
