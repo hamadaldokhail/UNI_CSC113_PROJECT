@@ -27,7 +27,7 @@ public class Hotel {
 	// adding room
 	public boolean addRoom(Room room) {
 		if (roomCount < rooms.length) {
-			rooms[roomCount] = new Room (room);
+			rooms[roomCount] = room;
 			roomCount++;
 			System.out.println("Room has been added successfully!");
 			return true;
@@ -169,13 +169,13 @@ public class Hotel {
 
 	// count available rooms
 	public int countAvailableRoomRecuresive(int index) {
+		
+		if (index >= reservations.length) {
 
-		if (index >= roomCount) {
-
-			return index;
+			return 0;
 		}
 
-		if (rooms[index] == null) {
+		if (reservations[index] == null) {
 			return 1 + countAvailableRoomRecuresive(index + 1);
 		}
 
@@ -197,5 +197,4 @@ public class Hotel {
 				System.out.println();
 		}
 	}
-
 }
