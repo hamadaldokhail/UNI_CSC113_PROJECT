@@ -4,17 +4,14 @@ public class HotelResrevationApp {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		int choose1, choose2, choose3;
-		int roomNumber;
-		String checkInDate;
-		String checkOutDate;
-		int nights;
+		int choose1, choose2, choose3 , nights , roomNumber;
+		String checkInDate , guestId , checkOutDate;
 		Guest guest;
-		boolean isbreakfastIncluded;
-		boolean vipService;
+		boolean isbreakfastIncluded , vipService;
 		Hotel hotel = new Hotel();
 		StandardReservation sr = null;
 		SuiteReservation sur = null;
+		CorporateSuiteReservation csr = null;
 		
 		System.out.println("---------------------");
 		System.out.println("Welcome to the Hotel");
@@ -26,20 +23,6 @@ public class HotelResrevationApp {
 			switch (choose1) {
 
 			case 1:
-				System.out.println("---------------------");
-				System.out.print("What is your name: ");
-				String name = input.next();
-				System.out.print("what is your id: ");
-				String guestId = input.next();
-				System.out.print("what is your phone number: ");
-				String phone = input.next();
-				System.out.print("what is your email: ");
-				String email = input.next();
-
-				guest = new Guest(guestId, name, phone, email);
-				System.out.println("---------------------");
-				hotel.addGuest(guest);
-
 				do {
 					System.out.println("---------------------");
 					System.out.println(
@@ -49,7 +32,31 @@ public class HotelResrevationApp {
 					System.out.println("---------------------");
 					switch (choose2) {
 					case 1:
-						System.out.println("What would you like to reserve (enter a number): \n1- Standard \n2- Suite");
+						System.out.println("---------------------");
+						System.out.print("What is your name: ");
+						String name = input.next();
+						
+						while(true) {
+						System.out.print("what is your id: ");
+						 guestId = input.next();
+						if(hotel.searchGuest(guestId)!=null) {
+							System.out.println("The ID is used before, try another");
+							continue;
+						}
+						else {
+							break;
+						}
+						}
+						System.out.print("what is your phone number: ");
+						String phone = input.next();
+						System.out.print("what is your email: ");
+						String email = input.next();
+					    guest = new Guest(guestId , name , phone , email);
+						
+						System.out.println("---------------------");
+
+
+						System.out.println("What would you like to reserve (enter a number): \n1- Standard \n2- Suite \n3-Corporate Member");
 						choose3 = input.nextInt();
 						System.out.println("---------------------");
 						System.out.println("When would you like to check-in: ");
@@ -80,9 +87,9 @@ public class HotelResrevationApp {
 							System.out.println("---------------------");
 
 							Room room = new Room(roomNumber, "Standard ", 200);
-							room.reserve();
 							sr = new StandardReservation(checkInDate, checkOutDate, nights, guest, room,
 									isbreakfastIncluded);
+
 							hotel.addReservation(sr);
 							System.out.println("---------------------");
 							hotel.addRoom(room);
@@ -97,29 +104,71 @@ public class HotelResrevationApp {
 							System.out.println("---------------------");
 
 							Room room = new Room(roomNumber, "Suite ", 500);
-							room.reserve();
 							sur = new SuiteReservation(checkInDate, checkOutDate, nights, guest, room, vipService);
 							hotel.addReservation(sur);
+
 							System.out.println("---------------------");
 							hotel.addRoom(room);
 							System.out.println("---------------------");
 
 							System.out.println("Reservation details: \n \n" + sur.getSummary());
-						} else
+						}
+						else if(choose3 == 3) {
+							
+							System.out.println("What is your company name: ");
+							String companyName = input.next();
+							while(true) {
+							System.out.println("What type do you want (Standard \\ Suite) : ");
+							String type = input.next();
+							
+							
+							if(type.equalsIgnoreCase("standard")) {
+								vipService = false;
+								double corporateDiscount = 15;
+								Room room = new Room(roomNumber , "standard"  , 200 );
+								hotel.addRoom(room);
+
+								csr = new CorporateSuiteReservation( checkInDate,  checkOutDate,  nights,
+										 guest,  room,  vipService,  companyName,  corporateDiscount);
+
+								hotel.addReservation(csr);
+								System.out.println("Reservation details: \n \n" + csr.getSummary());
+
+								
+								break;
+							}
+							else if(type.equalsIgnoreCase("suite")){
+								vipService = true;
+								double corporateDiscount = 20;
+
+								Room room = new Room(roomNumber , "Suite"  , 500  );
+								hotel.addRoom(room);
+								csr = new CorporateSuiteReservation( checkInDate,  checkOutDate,  nights,
+										 guest,  room,  vipService,  companyName,  corporateDiscount);	
+								hotel.addReservation(csr);
+								System.out.println("Reservation details: \n \n" + csr.getSummary());
+
+								break;
+							}
+							else {
+								System.out.println("Enter (Standard) or (Suite) only! ");
+								System.out.println("---------------------");
+
+								continue;
+							}
+						}
+						}
+						
+							
+					 else
 							System.out.println("Choose a correct number");
 
 						break;
 
 					case 2:
-
-						if (sur != null) {
-							hotel.cancelReservation(sur.getReservationId());
-							hotel.removeRoom(sur.room.getRoomNumber());
-						} else if (sr != null) {
-							hotel.cancelReservation(sr.getReservationId());
-							hotel.removeRoom(sr.room.getRoomNumber());
-						} else
-							System.out.println("Reserve a room first! ");
+						System.out.println("Enter your reservation ID: ");
+						String reservatioId = input.next();
+						hotel.cancelReservation(reservatioId);
 						break;
 
 					case 3:
@@ -140,11 +189,12 @@ public class HotelResrevationApp {
 						break;
 
 					case 5:
-
-						System.out.println(100 - hotel.countAvailableRoomRecuresive(0));
+						System.out.println();
+						System.out.println( hotel.countAvailableRoomRecuresive(0));
 						break;
 
 					case 6:
+						
 						System.out.println("Signing out...");
 						break;
 
