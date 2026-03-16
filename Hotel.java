@@ -24,10 +24,10 @@ public class Hotel {
 		return roomCount;
 	}
 
-	// adding room
+	// adding room (composition)
 	public boolean addRoom(Room room) {
 		if (roomCount < rooms.length) {
-			rooms[roomCount] = room;
+			rooms[roomCount] = new Room(room);
 			roomCount++;
 			System.out.println("Room has been added successfully!");
 			return true;
@@ -66,7 +66,7 @@ public class Hotel {
 		return null;
 	}
 
-	// adding guest
+	// adding guest (aggregation)
 	public boolean addGuest(Guest guest) {
 
 		if (guestCount < guests.length) {
@@ -102,15 +102,13 @@ public class Hotel {
 	public Guest searchGuest(String guestId) {
 		for (int i = 0; i < guestCount; i++) {
 			if (guests[i].matchesKeyword(guestId)) {
-				System.out.println("Guest found!");
 				return guests[i];
 			}
 		}
-		System.out.println("Guest is not found!");
 		return null;
 	}
 
-	// Adding a reservation
+	// Adding a reservation (composition)
 	public boolean addReservation(Reservation reservation) {
 		// check if there is available capacity
 		if (reservationCount == reservations.length) {
@@ -125,10 +123,29 @@ public class Hotel {
 			}
 		}
 		// then add the reservation in the first null value
-		reservations[reservationCount] = reservation;
-		System.out.println("Reservation has been added successfully!");
-		reservationCount++;
-		return true;
+		
+		// if it was standard
+		if (reservation instanceof StandardReservation) {
+			reservations[reservationCount] = new StandardReservation((StandardReservation) reservation);
+			System.out.println("Reservation has been added successfully!");
+			reservationCount++;
+			return true;
+		} 
+		//if it was Corporate (notice its before suite, because corporate is a subclass of  suite reservation)
+		else if (reservation instanceof CorporateSuiteReservation) {
+			reservations[reservationCount] = new CorporateSuiteReservation((CorporateSuiteReservation) reservation);
+			System.out.println("Reservation has been added successfully!");
+			reservationCount++;
+			return true;
+		} 
+		// if it was Suite
+		else{
+			reservations[reservationCount] = new SuiteReservation((SuiteReservation) reservation);
+			System.out.println("Reservation has been added successfully!");
+			reservationCount++;
+			return true;
+		}
+
 	}
 
 	// Cancelling reservation
@@ -169,7 +186,7 @@ public class Hotel {
 
 	// count available rooms
 	public int countAvailableRoomRecuresive(int index) {
-		
+
 		if (index >= reservations.length) {
 
 			return 0;
