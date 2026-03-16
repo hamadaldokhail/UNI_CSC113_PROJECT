@@ -8,6 +8,15 @@ public class StandardReservation extends Reservation {
 		super(checkInDate, checkOutDate, nights, guest, room);
 		this.breakfastIncluded = breakfastIncluded;
 	}
+	
+	
+
+	public StandardReservation(StandardReservation other) {
+		super(other);
+		breakfastIncluded = other.breakfastIncluded;
+	}
+
+
 
 	// used in the getsummary
 	public String getBreakfastIncluded() {
