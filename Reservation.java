@@ -18,6 +18,14 @@ public abstract class Reservation {
 		setReservationId();
 		nextId++;
 	}
+	public Reservation(Reservation other) {
+		checkInDate = other.checkInDate;
+		checkOutDate = other.checkOutDate;
+		nights = other.nights;
+		guest = other.guest;
+		room = other.room;
+		reservationId = other.reservationId;
+	}
 
 	// generating a custom ID
 	protected void setReservationId() {
@@ -37,4 +45,3 @@ public abstract class Reservation {
 	}
 
 }
-
