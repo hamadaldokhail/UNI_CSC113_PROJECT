@@ -26,13 +26,12 @@ public class HotelResrevationApp {
 				do {
 					System.out.println("---------------------");
 					System.out.println(
-							"choose one of these services (enter a number):\n \n1- Reserve a room \n2- Cancel a reservation \n3- Search a reservation \n4- Disaplay all reservations \n5- Display available rooms \n6- Sign Out");
+							"choose one of these services (enter a number):\n \n1- Reserve a room \n2- Cancel a reservation \n3- Search a reservation \n4- Disaplay all reservations \n5- Available rooms amount \n6- Sign Out");
 
 					choose2 = input.nextInt();
 					System.out.println("---------------------");
 					switch (choose2) {
 					case 1:
-						System.out.println("---------------------");
 						System.out.print("What is your name: ");
 						String name = input.next();
 						
@@ -43,7 +42,7 @@ public class HotelResrevationApp {
 							break;
 						}
 						else {
-							System.out.println("The ID is used before, try another");
+							System.out.println("The ID is used before, unfortunately you cannot have more than one reservation, enter a diffrent Id please");
 							
 						}
 						}
@@ -56,7 +55,7 @@ public class HotelResrevationApp {
 						System.out.println("---------------------");
 
 
-						System.out.println("What would you like to reserve (enter a number): \n1- Standard \n2- Suite \n3-Corporate Member");
+						System.out.println("What would you like to reserve (enter a number): \n1- Standard \n2- Suite \n3- Corporate Suite");
 						choose3 = input.nextInt();
 						System.out.println("---------------------");
 						System.out.println("When would you like to check-in: ");
@@ -72,6 +71,7 @@ public class HotelResrevationApp {
 
 							System.out.println("Enter room number: ");
 							roomNumber = input.nextInt();
+							System.out.println("---------------------");
 							if (hotel.searchRoom(roomNumber) != null) {
 								System.out.println("The room is already taken please choose another room");
 								continue;
@@ -90,25 +90,25 @@ public class HotelResrevationApp {
 							sr = new StandardReservation(checkInDate, checkOutDate, nights, guest, room,
 									isbreakfastIncluded);
 
-							hotel.addReservation(sr);
-							System.out.println("---------------------");
 							hotel.addRoom(room);
+							System.out.println("---------------------");
+							hotel.addReservation(sr);
 							System.out.println("---------------------");
 
 							System.out.println("Reservation details: \n \n" + sr.getSummary());
 						} else if (choose3 == 2) {
 
-							System.out.println("do you want VIP Service ");
+							System.out.println("Do you want VIP Service ");
 							String VIP = input.next();
 							vipService = VIP.equalsIgnoreCase("yes");
 							System.out.println("---------------------");
 
 							Room room = new Room(roomNumber, "Suite ", 500);
 							sur = new SuiteReservation(checkInDate, checkOutDate, nights, guest, room, vipService);
-							hotel.addReservation(sur);
-
-							System.out.println("---------------------");
+							
 							hotel.addRoom(room);
+							System.out.println("---------------------");
+							hotel.addReservation(sur);
 							System.out.println("---------------------");
 
 							System.out.println("Reservation details: \n \n" + sur.getSummary());
@@ -120,6 +120,7 @@ public class HotelResrevationApp {
 							while(true) {
 							System.out.println("What type do you want (Standard \\ Suite) : ");
 							String type = input.next();
+							System.out.println("---------------------");
 							
 							
 							if(type.equalsIgnoreCase("standard")) {
@@ -127,11 +128,13 @@ public class HotelResrevationApp {
 								double corporateDiscount = 15;
 								Room room = new Room(roomNumber , "standard"  , 200 );
 								hotel.addRoom(room);
+								System.out.println("---------------------");
 
 								csr = new CorporateSuiteReservation( checkInDate,  checkOutDate,  nights,
 										 guest,  room,  vipService,  companyName,  corporateDiscount);
 
 								hotel.addReservation(csr);
+								System.out.println("---------------------");
 								System.out.println("Reservation details: \n \n" + csr.getSummary());
 
 								
@@ -143,9 +146,11 @@ public class HotelResrevationApp {
 
 								Room room = new Room(roomNumber , "Suite"  , 500  );
 								hotel.addRoom(room);
+								System.out.println("---------------------");
 								csr = new CorporateSuiteReservation( checkInDate,  checkOutDate,  nights,
 										 guest,  room,  vipService,  companyName,  corporateDiscount);	
 								hotel.addReservation(csr);
+								System.out.println("---------------------");
 								System.out.println("Reservation details: \n \n" + csr.getSummary());
 
 								break;
@@ -189,7 +194,6 @@ public class HotelResrevationApp {
 						break;
 
 					case 5:
-						System.out.println();
 						System.out.println( hotel.countAvailableRoomRecuresive(0));
 						break;
 
