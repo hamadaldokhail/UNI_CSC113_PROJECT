@@ -8,6 +8,15 @@ public class SuiteReservation extends Reservation {
 		super(checkInDate, checkOutDate, nights, guest, room);
 		this.vipService = vipService;
 	}
+	
+	
+
+	public SuiteReservation(SuiteReservation other) {
+		super(other);
+		vipService = other.vipService;
+	}
+
+
 
 	// used in the getSummary
 	public String getVipService() {
