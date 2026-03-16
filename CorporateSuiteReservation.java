@@ -11,6 +11,16 @@ public class CorporateSuiteReservation extends SuiteReservation {
 		this.companyName = companyName;
 		this.corporateDiscount = corporateDiscount;
 	}
+	
+	
+
+	public CorporateSuiteReservation(CorporateSuiteReservation other) {
+		super(other);
+		companyName = other.companyName;
+		corporateDiscount = other.corporateDiscount;
+	}
+
+
 
 	@Override
 	public double calculateCost() {
