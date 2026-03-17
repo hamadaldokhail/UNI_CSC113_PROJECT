@@ -29,7 +29,6 @@ public class Hotel {
 		if (roomCount < rooms.length) {
 			rooms[roomCount] = new Room(room);
 			roomCount++;
-			System.out.println("Room has been added successfully!");
 			return true;
 		}
 
