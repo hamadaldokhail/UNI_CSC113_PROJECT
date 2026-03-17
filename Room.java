@@ -56,15 +56,15 @@ public class Room implements Searchable {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
-
-	public String reserve() {
+	
+	public void reserve() {
 		available = false;
-		return "Room" + roomNumber + "is now reserved <> ";
+		System.out.println("Room " + roomNumber + " is now reserved <> ");
 	}
-
-	public String release() {
+	
+	public void release() {
 		available = true;
-		return "Room" + roomNumber + "is now released >< ";
+		System.out.println("Room " + roomNumber + " is now released >< ");
 	}
 
 	@Override
@@ -76,4 +76,3 @@ public class Room implements Searchable {
 	}
 
 }
-
