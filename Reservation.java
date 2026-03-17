@@ -18,6 +18,10 @@ public abstract class Reservation {
 		setReservationId();
 		nextId++;
 	}
+	public Room getRoom() {
+		
+		return room;
+	}
 	public Reservation(Reservation other) {
 		checkInDate = other.checkInDate;
 		checkOutDate = other.checkOutDate;
