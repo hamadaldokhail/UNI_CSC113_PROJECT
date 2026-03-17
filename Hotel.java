@@ -11,9 +11,9 @@ public class Hotel {
 	private int reservationCount;
 
 	public Hotel() {
-		this.rooms = new Room[100];
+		this.rooms = new Room[10];
 		this.guests = new Guest[100];
-		this.reservations = new Reservation[100];
+		this.reservations = new Reservation[10];
 		roomCount = 0;
 		guestCount = 0;
 		reservationCount = 0;
@@ -191,12 +191,12 @@ public class Hotel {
 	// count available rooms
 	public int countAvailableRoomRecuresive(int index) {
 
-		if (index >= reservations.length) {
+		if (index >= rooms.length) {
 
 			return 0;
 		}
 
-		if (reservations[index] == null) {
+		if (rooms[index].isAvailable()) {
 			return 1 + countAvailableRoomRecuresive(index + 1);
 		}
 
