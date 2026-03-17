@@ -122,6 +122,9 @@ public class Hotel {
 				return false;
 			}
 		}
+		// reserve the room
+		reservation.room.reserve();
+		
 		// then add the reservation in the first null value
 		
 		// if it was standard
@@ -161,7 +164,8 @@ public class Hotel {
 			System.out.println("Reservation not found!");
 			return false;
 		}
-
+		//release the room
+		reservations[index].room.release();
 		// cancelling by shifting
 		for (int i = index; i < reservationCount - 1; i++) {
 			reservations[i] = reservations[i + 1];
