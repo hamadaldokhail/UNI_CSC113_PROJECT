@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HotelReservationApp {
+public class HotelResrevationApp {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
@@ -118,7 +118,7 @@ public class HotelReservationApp {
 								System.out.println("---------------------");
 								continue;
 							}
-							if (hotel.searchRoom(roomNumber).getType() != roomType) {
+							if (!hotel.searchRoom(roomNumber).getType().equals(roomType)) {
 								System.out.println("Please choose a room that matches the reservation type!");
 								System.out.println("---------------------");
 								continue;
