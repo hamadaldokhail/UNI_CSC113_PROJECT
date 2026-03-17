@@ -180,12 +180,14 @@ public class HotelReservationApp {
 					case 2:
 						System.out.print("Enter the reservation ID: ");
 						String reservatioId = input.next();
+						System.out.println("---------------------");
 						hotel.cancelReservation(reservatioId);
 						break;
 
 					case 3:
 						System.out.print("Enter the reservation ID: ");
 						String idsearch = input.next();
+						System.out.println("---------------------");
 						if (null != hotel.searchReservation(idsearch)) {
 							System.out.println("Reservation details:  \n");
 							System.out.println(hotel.searchReservation(idsearch).getSummary());
@@ -220,11 +222,11 @@ public class HotelReservationApp {
 				break;
 			case 2:
 				System.out.println("---------------------");
-				System.out.println("Good bye");
+				System.out.println("Good bye, see you later!");
 				break;
 
 			default:
-				System.out.print("Choose a correct number");
+				System.out.println("Choose a correct number");
 			}
 		} while (choose1 != 2);
 	}
